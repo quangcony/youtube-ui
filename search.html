@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube Search</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/imgs/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="container-full-w">
+        <div class="header d-flex align-center justify-between">
+          <!-- HEADER LEFT -->
+          <div class="header-left d-flex align-center">
+            <button
+              type="button"
+              class="btn btn-icon rounded toggle-sidebar hidden-on-mobile"
+            >
+              <i class="bx bx-menu-alt-left"></i>
+            </button>
+            <a href="" class="header-logo">
+              <img src="./assets/imgs/logo_light.png" alt="Youtube Logo" />
+            </a>
+          </div>
+
+          <!-- HEADER SEARCH -->
+          <div
+            class="header-search d-flex align-center justify-center hidden-on-mobile"
+          >
+            <div class="search-input">
+              <input
+                id="search-input"
+                type="text"
+                placeholder="Tìm kiếm"
+                spellcheck="false"
+              />
+              <i class="bx bx-search-alt-2 search-icon"></i>
+              <button type="button" class="btn btn-keyboard">
+                <i class="bx bxs-keyboard"></i>
+              </button>
+            </div>
+            <button type="button" class="btn btn-search">
+              <i class="bx bx-search-alt-2"></i>
+            </button>
+            <button type="button" class="btn btn-icon rounded">
+              <i class="bx bxs-microphone"></i>
+            </button>
+          </div>
+          <!-- HEADER ACTIONS -->
+          <div class="header-actions">
+            <button type="button" class="btn btn-icon rounded">
+              <i class="bx bx-video-plus"></i>
+            </button>
+            <button type="button" class="btn btn-icon rounded">
+              <i class="bx bxs-grid"></i>
+            </button>
+            <button type="button" class="btn btn-icon rounded">
+              <i class="bx bx-bell"></i>
+            </button>
+            <button type="button" class="btn btn-icon btn-avatar rounded">
+              <img src="./assets/imgs/avatar_1.jpg" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar sidebar-lg active hidden-on-mobile">
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li class="nav-item active">
+            <a href="./home.html">
+              <span class="nav-item-icon">
+                <i class="bx bx-home-heart"></i>
+              </span>
+              <p class="nav-item-text">Trang chủ</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-compass"></i></span>
+              <p class="nav-item-text">Khám phá</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bx-movie-play"></i>
+              </span>
+              <p class="nav-item-text">Shorts</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-slideshow"></i></span>
+              <p class="nav-item-text">Kênh đăng kí</p>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bxs-videos"></i>
+              </span>
+              <p class="nav-item-text">Thư viện</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-history"></i></span>
+              <p class="nav-item-text">Video đã xem</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bx-video-recording"></i>
+              </span>
+              <p class="nav-item-text">Video của bạn</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-time-five"></i></span>
+              <p class="nav-item-text">Xem sau</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-like"></i></span>
+              <p class="nav-item-text">Video đã thích</p>
+            </a>
+          </li>
+        </ul>
+
+        <!-- SUBCRIBED CHANNEL -->
+        <ul class="nav-list">
+          <h3 class="title">Kênh đăng kí</h3>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-img">
+                <img src="./assets/imgs/channel_1.jpg" alt="" class="rounded" />
+              </span>
+              <p class="nav-item-text">F8 Offical</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-img">
+                <img src="./assets/imgs/channel_2.jpg" alt="" class="rounded" />
+              </span>
+              <p class="nav-item-text">Phạm Huy Hoàng</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-img">
+                <img src="./assets/imgs/channel_3.jpg" alt="" class="rounded" />
+              </span>
+              <p class="nav-item-text">KPlus Sport</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-img">
+                <img src="./assets/imgs/channel_4.jpg" alt="" class="rounded" />
+              </span>
+              <p class="nav-item-text">Kiến thức thú vị</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-img">
+                <img src="./assets/imgs/channel_5.jpg" alt="" class="rounded" />
+              </span>
+              <p class="nav-item-text">Easy Tutorial</p>
+            </a>
+          </li>
+        </ul>
+
+        <!-- SERVICE -->
+        <ul class="nav-list">
+          <h3 class="title">Dịch vụ khác của youtube</h3>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bx-aperture"></i>
+              </span>
+              <p class="nav-item-text">Trò chơi</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-station"></i></span>
+              <p class="nav-item-text">Sự kiện trực tiếp</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bx-trophy"></i>
+              </span>
+              <p class="nav-item-text">Thể thao</p>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-foot">
+          <ul class="tags">
+            <li class="tag">
+              <a href="">
+                Giới thiệu
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Báo chí
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Bản quyền
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Liên hệ với chúng tôi
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Người sáng tạo
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Quảng cáo
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Nhà phát triển
+              </a>
+            </li>
+          </ul>
+          <ul class="tags">
+            <li class="tag">
+              <a href="">
+                Điều khoản
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Quyền riêng tư
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Chính sách và an toàn
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Cách Youtube hoạt động
+              </a>
+            </li>
+            <li class="tag">
+              <a href="">
+                Thử các chức năng mới
+              </a>
+            </li>
+          </ul>
+          <p>© 2022 Google LLC</p>
+        </div>
+      </nav>
+    </div>
+
+    <!-- SIDEBAR SMALL -->
+    <div class="sidebar sidebar-sm">
+      <div class="navbar">
+        <ul class="nav-list">
+          <li class="nav-item active">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bx-home-heart"></i>
+              </span>
+              <p class="nav-item-text">Trang chủ</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-compass"></i></span>
+              <p class="nav-item-text">Khám phá</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bx-movie-play"></i>
+              </span>
+              <p class="nav-item-text">Shorts</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon"><i class="bx bx-slideshow"></i></span>
+              <p class="nav-item-text">Kênh đăng kí</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="">
+              <span class="nav-item-icon">
+                <i class="bx bxs-videos"></i>
+              </span>
+              <p class="nav-item-text">Thư viện</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <main class="main search-main">
+      <div class="container-full-w">
+        <div class="content">
+          <div class="results-video" id="results-video">
+            <!-- VIDEO ITEM -->
+          </div>
+          <button type="button" class="btn btn-loadmore" id="search-loadmore">
+            Tải thêm
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/main.js"></script>
+</html>
