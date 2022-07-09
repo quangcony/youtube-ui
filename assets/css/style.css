@@ -768,7 +768,8 @@ header {
     margin-top: 20px;
   }
   .search-main .content {
-    padding: 15px 30px;
+    padding: 0;
+    padding-bottom: 50px;
   }
 }
 
