@@ -390,6 +390,7 @@ header {
 }
 
 .main .scroll-container {
+  width: calc(100% - var(--sidebar-w));
   position: fixed;
   top: calc(var(--header-height) + 5px);
   left: var(--sidebar-w);
@@ -681,11 +682,21 @@ header {
     padding-left: 10px;
     padding-right: 10px;
   }
+  .btn-icon {
+    padding: 5.5px;
+  }
+  .btn-avatar {
+    padding: 0;
+  }
   .header {
     --header-height: 50px;
   }
   .header-logo {
     margin-left: 0;
+  }
+  .header-search .search-input input {
+    font-size: 1.2rem;
+    border-radius: 999px;
   }
   .list-movies {
     grid-template-columns: repeat(1, 1fr);
@@ -718,6 +729,7 @@ header {
     --header-height: 50px;
     left: 0;
     top: var(--header-height);
+    width: 100%;
   }
   .scroll-container .genres {
     padding-left: 10px;
