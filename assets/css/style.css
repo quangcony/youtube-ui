@@ -442,7 +442,7 @@ header {
 
 .movie-item-img {
   width: 100%;
-  height: 166px;
+  height: 180px;
   object-fit: cover;
 }
 
@@ -672,15 +672,15 @@ header {
 /* MOBILE SCREEN */
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   :root {
-    --sidebar-w-sm: 50px;
+    --sidebar-w-sm: 40px;
     --btn-icon-height: 35px;
   }
   .hidden-on-mobile {
     display: none !important;
   }
   .container-full-w {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .btn-icon {
     padding: 5.5px;
@@ -690,6 +690,7 @@ header {
   }
   .header {
     --header-height: 50px;
+    padding: 0 10px;
   }
   .header-logo {
     margin-left: 0;
@@ -722,6 +723,9 @@ header {
     justify-content: center;
     padding: 0;
   }
+  .sidebar .navbar .nav-list .nav-item .nav-item-icon i {
+    font-size: 1.8rem;
+  }
   .main {
     margin-left: 0;
   }
@@ -734,16 +738,20 @@ header {
   .scroll-container .genres {
     padding-left: 10px;
   }
+  .scroll-container .genres .genre {
+    padding: 4px 10px;
+  }
   .main .content {
     padding: calc(var(--genres-h) + 0px) 0;
   }
+
   .movie-item-info {
-    padding-bottom: 30px;
+    padding: 10px;
   }
 
   /* DETAIL PAGE */
   .container-lg {
-    padding: 0 10px;
+    padding: 0;
   }
   .detail-main .content {
     flex-direction: column;
@@ -758,9 +766,20 @@ header {
   .detail-main .content .detail-video .main-video {
     height: 300px;
   }
+  .detail-main .content .detail-video .video-container .title {
+    font-size: 2rem;
+    padding: 0 10px;
+  }
+  .detail-main .content .detail-video .video-container .published-at {
+    padding: 0 10px;
+  }
+  .detail-main .content .detail-video .video-info {
+    padding: 0 10px;
+  }
   .detail-main .content .detail-video .video-info .video-description .des {
     max-width: 100%;
   }
+
   .detail-main .content .related-videos {
     flex-basis: 100%;
     padding-left: 0;
