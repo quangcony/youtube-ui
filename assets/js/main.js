@@ -25,20 +25,24 @@ let currentIndexGenre = 0
 function start() {
   const params = {
     page: page,
+    language: 'vi-VN',
   }
 
   const params_s = {
     page: searchPage,
+    language: 'vi-VN',
   }
 
   const id = new URLSearchParams(location.search).get('id')
   const query = new URLSearchParams(location.search).get('search')
 
   getMoviesList(renderMoviesList, params)
-  id && getVideos(renderVideo, id)
-  id && getSimilarVideos(renderSimilarVideos, id)
+  id && getVideos(renderVideo, id, params)
+  id && getSimilarVideos(renderSimilarVideos, id, params)
   query && getMoviesSearch(renderMoviesSearch, query, params_s)
-  getGenreList(renderGenreList)
+  getGenreList(renderGenreList, params)
+  id && getDetail(id, params)
+  id && getCredits(id, params)
 
   handleEvent()
 }
@@ -68,18 +72,37 @@ function getMoviesList(callback, params) {
     .then(callback)
 }
 
-function getVideos(callback, id) {
+function getVideos(callback, id, params) {
   axios
-    .get(api.baseUrl + `movie/${id}/videos?api_key=` + api.apiKey)
+    .get(api.baseUrl + `movie/${id}/videos?api_key=` + api.apiKey, { params })
     .then(function (response) {
       return response.data.results
     })
     .then(callback)
 }
 
-async function getSimilarVideos(callback, id) {
+async function getDetail(id, params) {
   await axios
-    .get(api.baseUrl + `movie/${id}/similar?api_key=` + api.apiKey)
+    .get(api.baseUrl + `movie/${id}?api_key=` + api.apiKey, { params })
+    .then((response) => {
+      return response.data
+    })
+    .then(renderDetail)
+}
+
+async function getCredits(id, params) {
+  await axios
+    .get(api.baseUrl + `movie/${id}/credits?api_key=` + api.apiKey, { params })
+    .then((response) => {
+      console.log(response.data.cast)
+      return response.data.cast
+    })
+    .then(renderCredits)
+}
+
+async function getSimilarVideos(callback, id, params) {
+  await axios
+    .get(api.baseUrl + `movie/${id}/similar?api_key=` + api.apiKey, { params })
     .then(function (response) {
       return response.data.results
     })
@@ -100,9 +123,9 @@ async function getMoviesSearch(callback, query, params) {
     .then(callback)
 }
 
-async function getGenreList(callback) {
+async function getGenreList(callback, params) {
   await axios
-    .get(api.baseUrl + 'genre/movie/list?api_key=' + api.apiKey)
+    .get(api.baseUrl + 'genre/movie/list?api_key=' + api.apiKey, { params })
     .then(function (response) {
       return response.data.genres
     })
@@ -124,8 +147,8 @@ function renderMoviesList(movies) {
     div.getElementById('info-title').textContent = movie.title
     div.getElementById(
       'info-details',
-    ).innerHTML = `<p class="text-sm" >Vote Average: ${movie.vote_average}</p>
-    <p class="release-date text-sm">Release Date: ${movie.release_date}</p>`
+    ).innerHTML = `<p class="text-sm" >Bình chọn: ${movie.vote_average}</p>
+    <p class="release-date text-sm">Ngày phát hành: ${movie.release_date}</p>`
     movieList.append(div)
   })
 }
@@ -135,19 +158,41 @@ function renderVideo(videos) {
   const mainVideo = document.querySelector('#main-video')
   const titleVideo = videoContainer.querySelector('.title')
   const publishedAt = videoContainer.querySelector('.published-at')
-  const videoDes = document.getElementById('video-description')
-  const channelName = videoDes.querySelector('#channel_name')
-  const description = videoDes.querySelector('.des')
 
   let i = 0
   let video = videos[i]
   mainVideo.src = 'https://www.youtube.com/embed/' + video.key
   titleVideo.textContent = video.name
   publishedAt.textContent = video.published_at
+}
+
+function renderDetail(item) {
+  const videoDes = document.getElementById('video-description')
+  const channelName = videoDes.querySelector('#channel_name')
+  const description = videoDes.querySelector('.des')
+
   channelName.textContent = 'F8 Official'
-  description.textContent = `${video.name} lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Alias minus accusantium reiciendis neque temporibus, modi cupiditate cumque sed, 
-    quibusdam perferendis quasi voluptatibus beatae. Iure, culpa. Facere pariatur ipsam quas neque!`
+  description.textContent = item.overview
+}
+
+function renderCredits(casts) {
+  const htmls = casts.map(
+    (cast) =>
+      `<div class="cast">
+    <img
+      src=${
+        (cast.profile_path && api.w500Image(cast.profile_path)) ||
+        'assets/imgs/user_default.jpg'
+      }
+      class="img-cast"
+      alt=""
+    />
+    <p class="name-cast">${cast.name}</p>
+    <p class="text-sm">Nhân vật: ${cast.character}</p>
+  </div>`,
+  )
+
+  document.getElementById('cast-list').innerHTML = htmls.join('')
 }
 
 function renderSimilarVideos(videos) {
@@ -167,7 +212,7 @@ function renderSimilarVideos(videos) {
           <h3 class="title">
             ${item.title}
           </h3>
-          <p class="text-sm">Vote average: ${item.vote_average}</p>
+          <p class="text-sm">Bình chọn: ${item.vote_average}</p>
           <p class="text-sm">${item.release_date}</p>
         </div>
       </div>
@@ -197,7 +242,7 @@ function renderMoviesSearch(videos) {
             ${item.title}
           </h3>
           <p class="text-sm">${item.release_date}</p>
-          <p class="text-sm">Vote Average: ${item.vote_average}</p>
+          <p class="text-sm">Bình chọn: ${item.vote_average}</p>
           <div class="des text-sm truncate">
             ${item.overview}
           </div>
@@ -240,6 +285,7 @@ function loadMore() {
     page += 1
     const params = {
       page: page,
+      language: 'vi-VN',
     }
     getMoviesList(renderMoviesList, params)
   }
@@ -250,6 +296,7 @@ function searchLoadMore() {
     searchPage += 1
     const params = {
       page: searchPage,
+      language: 'vi-VN',
     }
     const query = new URLSearchParams(location.search).get('search')
     getMoviesSearch(renderMoviesSearch, query, params)
